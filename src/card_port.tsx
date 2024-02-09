@@ -40,7 +40,7 @@ function Portfolio() {
                             variant='filled' color={environment ? 'green' : 'gray'} radius='xl' size='lg'
                         // style={{ backgroundColor: 'white' }}
                         >
-                            null
+                            leaf
                         </ActionIcon>
 
                         <ActionIcon
@@ -48,7 +48,7 @@ function Portfolio() {
                             variant='filled' color={writing ? 'cyan' : 'gray'} radius='xl' size='lg'
                         // style={{ backgroundColor: 'white' }}
                         >
-                            null
+                            pen
                         </ActionIcon>
 
                         <ActionIcon
@@ -56,7 +56,7 @@ function Portfolio() {
                             variant='filled' color={tech ? 'blue' : 'gray'} radius='xl' size='lg'
                         // style={{ backgroundColor: 'white' }}
                         >
-                            null
+                            code
                         </ActionIcon>
                     </Stack>
                 </div>

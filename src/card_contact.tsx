@@ -1,4 +1,4 @@
-import { Title, Stack, Text } from "@mantine/core";
+import { Title, Stack, Text, Button } from "@mantine/core";
 
 // TODO: add a form to send an email?
 // TODO: Have it fill out the whole box  OR: have it slip from below the nav bar with socials and copyright
@@ -25,6 +25,18 @@ function Contact() {
                 <Stack px={12} gap={'xs'}>
                     <Title order={5}>Phone: </Title>
                     <Text><a href='786-208-7395'> (786) 208-7395</a></Text>
+                </Stack>
+                <Stack
+                    h={300}
+                    bg="var(--mantine-color-body)"
+                    align="flex-end"
+                    p={20}
+                >
+                    <Button>Twitter</Button>
+                    <Button>Medium</Button>
+                    <Button>Facebook</Button>
+                    <Button>GitHub</Button>
+                    <Button>Youtube</Button>
                 </Stack>
                 {/* </Flex> */}
             </Stack>

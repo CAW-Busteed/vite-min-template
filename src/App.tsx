@@ -1,6 +1,6 @@
 import "@mantine/core/styles.css";
 
-import { Flex, Stack, Button, Container, MantineProvider, Title, ActionIcon } from "@mantine/core";
+import { Flex, Stack, Container, MantineProvider, Title, ActionIcon } from "@mantine/core";
 // import { IconHeart } from '@tabler/icons-react';
 import { theme } from "./theme";
 import { useState } from "react";
@@ -64,7 +64,7 @@ export default function App() {
 
       </Container>
 
-      <Flex style={{ height: '100vh', width: '35%', position: 'absolute', left: 0, alignItems: 'center', justifyContent: 'center', boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} justify="space-between" gap="xl">
+      <Flex style={{ height: '100vh', width: '35%', position: 'absolute', left: 0, alignItems: 'center', justifyContent: 'center', boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} justify="center" gap="xl">
         <Stack
           h={300}
           bg="var(--mantine-color-body)"
@@ -72,42 +72,41 @@ export default function App() {
           py={20}
           pl={20}
         >
-          {/* TODO: add icons and have them grow on hover with a word. Active icons are colored in */}
-          <ActionIcon onClick={() => setActive("home")} variant='outline' color='cyan' radius='xl' size='xl' style={{ backgroundColor: 'white' }}>
+          {/* TODO: add icons and have them grow on hover with a word. */}
+          <ActionIcon onClick={() => setActive("home")} variant={active == 'home' ? "filled" : "outline"} color='cyan' radius='xl' size='xl'
+          // style={{ backgroundColor: 'white' }}
+          >
             {/* Home */}
             Home
           </ActionIcon>
-          <ActionIcon onClick={() => setActive("blog")} variant='outline' color='gray' radius='xl' size='xl' style={{ backgroundColor: 'white' }}>
+          <ActionIcon onClick={() => setActive("blog")} variant={active == 'blog' ? "filled" : "outline"} color='gray' radius='xl' size='xl'
+          // style={{ backgroundColor: 'white' }}
+          >
             {/* Blog */}
             Blog
           </ActionIcon>
-          <ActionIcon onClick={() => setActive("portfolio")} variant='outline' color='gray' radius='xl' size='xl' style={{ backgroundColor: 'white' }}>
+          <ActionIcon onClick={() => setActive("portfolio")} variant={active == 'portfolio' ? "filled" : "outline"} color='gray' radius='xl' size='xl'
+          // style={{ backgroundColor: 'white' }}
+          >
             {/* Portfolio */}
             Portfolio
           </ActionIcon>
-          <ActionIcon onClick={() => setActive("skills")} variant='outline' color='gray' radius='xl' size='xl' style={{ backgroundColor: 'white' }}>
+          <ActionIcon onClick={() => setActive("skills")} variant={active == 'skills' ? "filled" : "outline"} color='gray' radius='xl' size='xl'
+          // style={{ backgroundColor: 'white' }}
+          >
             {/* Skills */}
             Skills
           </ActionIcon>
-          <ActionIcon onClick={() => setActive("contact")} variant='outline' color='gray' radius='xl' size='xl' style={{ backgroundColor: 'white' }}>
+          <ActionIcon onClick={() => setActive("contact")} variant={active == 'contact' ? "filled" : "outline"} color='gray' radius='xl' size='xl'
+          // style={{ backgroundColor: 'white' }}
+          >
             {/* Contact */}
             Contact
           </ActionIcon>
 
         </Stack>
         <Title order={1} p={20} style={{ writingMode: 'vertical-rl', textOrientation: 'sideways' }}>Cedric Busteed</Title>
-        <Stack
-          h={300}
-          bg="var(--mantine-color-body)"
-          align="flex-end"
-          p={20}
-        >
-          <Button>Twitter</Button>
-          <Button>Medium</Button>
-          <Button>Facebook</Button>
-          <Button>GitHub</Button>
-          <Button>Youtube</Button>
-        </Stack>
+
 
 
       </Flex>

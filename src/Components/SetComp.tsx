@@ -7,7 +7,7 @@ function SetComp({ title, description, date, image, childComponent }: { title: s
 
     return (
         <>
-            <Box maw='90%' bg={'gray.1'} style={{ boxShadow: '8px 8px 15px 2px rgba(0, 0, 0, 0.15)' }}>
+            <Box bg={'gray.1'} style={{ boxShadow: '8px 8px 15px 2px rgba(0, 0, 0, 0.15)' }}>
                 <Stack px={12} py={6}>
                     {!isTruncated &&
                         <Stack>

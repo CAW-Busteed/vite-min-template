@@ -1,40 +1,58 @@
 import { useState } from 'react'
-import { Button, Image, Group, Title, Text, Stack, Box } from '@mantine/core';
+import { Button, Image, Group, Title, Text, Stack, Box, Flex } from '@mantine/core';
 
-function SetComp({ title, description, date, childComponent }: { title: string, description: string, date: string, childComponent: React.ReactNode }) {
+function SetComp({ title, description, date, image, childComponent }: { title: string, description: string, date: string, image: string, childComponent: React.ReactNode }) {
 
-    const [isTruncated, setIsTruncated] = useState(true);
+    const [isTruncated, setIsTruncated] = useState(false);
 
     return (
         <>
-            <Box maw='90%' bg={'gray.1'} style={{ border: '1px solid black' }}>
+            <Box maw='90%' bg={'gray.1'} style={{ boxShadow: '8px 8px 15px 2px rgba(0, 0, 0, 0.15)' }}>
                 <Stack px={12} py={6}>
-                    <Group >
-                        <Image
-                            radius="md"
-                            h={50}
-                            w={200}
-                            fit="contain"
-                            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
-                            fallbackSrc="https://placehold.co/600x400?text=Placeholder"
-                        // replace src and fallbackSrc with variables
-                        />
+                    {!isTruncated &&
                         <Stack>
-                            <Title mb={0} order={3}>{title}</Title>
-                            <Text fs={'italic'} size='sm' c={'dimmed'}>{date}</Text>
-                        </Stack>
+                            <Group >
+                                <Image
+                                    radius="md"
+                                    h={50}
+                                    w={200}
+                                    fit="contain"
+                                    src={image}
+                                    fallbackSrc="https://placehold.co/600x400?text=Placeholder"
+                                // replace fallbackSrc with variables
+                                />
+                                <Stack justify="center">
+                                    <Title mb={0} order={3}>{title}</Title>
+                                    <Text fs={'italic'} size='sm' c={'dimmed'}>{date}</Text>
+                                </Stack>
 
-                    </Group>
+                            </Group>
 
-                    <Text mx={6} lineClamp={isTruncated ? 4 : false}>
-                        {description}
-                    </Text>
-                    {isTruncated && <Box>
-                        {childComponent}
-                    </Box>}
+                            <Text mx={6}>
+                                {description}
+                            </Text>
+                        </Stack>}
 
-                    <Button mx={24} onClick={() => setIsTruncated(!isTruncated)}>
-                        {isTruncated ? 'Show more' : 'Show less'}
+                    {isTruncated &&
+                        <Box>
+                            <Flex>
+
+                                <Image m={12}
+                                    h={200}
+                                    w="auto"
+                                    fit="contain"
+                                    src={image} />
+                                <Stack pl={36} justify="center">
+                                    <Title order={1}>{title}</Title>
+                                    <Text fs={'italic'} size='sm' c={'dimmed'}>{date}</Text>
+                                    {/* A share bar? */}
+                                </Stack>
+                            </Flex>
+                            {childComponent}
+                        </Box>}
+
+                    <Button mx={24} my={12} onClick={() => setIsTruncated(!isTruncated)}>
+                        {isTruncated ? 'Show less' : 'Read more'}
                         {/* change button style to simple text link */}
                     </Button>
                 </Stack>

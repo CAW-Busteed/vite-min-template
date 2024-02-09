@@ -1,7 +1,5 @@
-import { Title, Stack, Text, Flex, Image } from "@mantine/core";
-// import Pic from "./assets/cb_profile_image.jpg";
-
-//TODO: figure out why the image can't be imported
+import { Title, Stack, Text, Flex, Image, Box } from "@mantine/core";
+import Pic from "./assets/cb_profile_image.jpg";
 
 interface AboutProps {
     title: string;
@@ -15,7 +13,9 @@ function About({ title, text }: AboutProps) {
                 <Title order={3}>{title}</Title>
                 <Text>{text}</Text>
             </Stack>
-            {/* <Image radius={'xl'}>{Pic}</Image> */}
+            <Box>
+                <Image radius={'xl'} src={Pic} />
+            </Box>
         </Flex>
     );
 };

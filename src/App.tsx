@@ -3,14 +3,15 @@ import "@mantine/core/styles.css";
 import { Flex, Stack, Button, Container, MantineProvider, Title, ActionIcon } from "@mantine/core";
 // import { IconHeart } from '@tabler/icons-react';
 import { theme } from "./theme";
-import Portfolio from "./card_port";
+import { useState } from "react";
 import HistoryLg from "./Components/HistoryLg";
 import SkillsBase from "./Components/SkillsBase";
 
 import Contact from "./card_contact";
 import Home from "./card_home";
+import Blog from "./card_blog";
+import Portfolio from "./card_port";
 
-import { useState } from "react";
 
 
 export default function App() {
@@ -30,14 +31,13 @@ export default function App() {
 
           {active === 'home' &&
             // basic home
-            //Broken atm?
             <Home />
 
           }
 
           {active === 'blog' &&
             // basic blog
-            null
+            <Blog />
           }
 
           {active === 'portfolio' &&
@@ -73,7 +73,7 @@ export default function App() {
           pl={20}
         >
           {/* TODO: add icons and have them grow on hover with a word. Active icons are colored in */}
-          <ActionIcon onClick={() => setActive("home")} variant='outline' color='gray' radius='xl' size='xl' style={{ backgroundColor: 'white' }}>
+          <ActionIcon onClick={() => setActive("home")} variant='outline' color='cyan' radius='xl' size='xl' style={{ backgroundColor: 'white' }}>
             {/* Home */}
             Home
           </ActionIcon>

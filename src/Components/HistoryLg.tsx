@@ -14,7 +14,7 @@ function HistoryLg() {
                 <HistorySm title="University of Iowa" date="2018 - 2020" location="Iowa City, IA" description="B.A. Major in English and Creative Writing, Minor in Environmental Policy and Planning" />
                 <HistorySm title="Miami Dade College" date="2017 - 2018" location="Miami, FL" description="A.A. in English and Sustainability" />
                 <HistorySm title="McGill University" date="2014 - 2016" location="Montreal, Quebec" description="Studied history, literature, biology, and oceanography." />
-                <HistorySm title="Coral Reef Senior High" date="2010 - 2014" location="Miami, FL" description="International Baccaleaureate, English Society, volunteer tutor." />
+                <HistorySm title="Coral Reef Senior High" date="2010 - 2014" location="Miami, FL" description="International Baccalaureate, English Society, volunteer tutor." />
             </Stack>
             <Stack
                 style={{ flex: 1 }}

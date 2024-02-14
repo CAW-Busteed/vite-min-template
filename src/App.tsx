@@ -52,6 +52,7 @@ export default function App() {
             <>
               <SkillsBase />
               <HistoryLg />
+              {/* TODO: fix the skillsbase overflow issue, check positioning/overflow of Skillsbase */}
             </>
           }
 

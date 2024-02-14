@@ -1,4 +1,4 @@
-import { Box } from "@mantine/core";
+import { Box, Table } from "@mantine/core";
 import '@mantine/carousel/styles.css';
 // import { Carousel } from '@mantine/carousel';
 import About from "./Components/About";
@@ -26,6 +26,9 @@ function Home() {
             </Box>
 
             {/* TODO: add a price range for freelancing */}
+            <Table>
+
+            </Table>
         </>
     );
 }

@@ -1,15 +1,46 @@
 import { useState } from 'react'
-import { Button, Image, Group, Title, Text, Stack, Box, Flex } from '@mantine/core';
+// import { useClickOutside } from '@mantine/hooks';
+import { Button, Image, Group, Title, Text, Stack, Box, Flex, Transition, Paper } from '@mantine/core';
 
 function SetComp({ title, description, date, image, childComponent }: { title: string, description: string, date: string, image: string, childComponent: React.ReactNode }) {
 
     const [isTruncated, setIsTruncated] = useState(false);
+    // const clickOutsideRef = useClickOutside(() => setIsTruncated(false));
+
 
     return (
         <>
             <Box bg={'gray.1'} style={{ boxShadow: '8px 8px 15px 2px rgba(0, 0, 0, 0.15)' }}>
+
+
+                {/* Transition component example, works best with papers. Recommend using CSS */}
+                {/* <Transition
+                    mounted={isTruncated}
+                    transition='scale-y'
+                    duration={200}
+                    timingFunction="ease"
+                    keepMounted
+                >
+                    {(transitionStyle) => (
+                        <Paper
+                            shadow="md"
+                            p="xl"
+                            h={120}
+                            pos="absolute"
+                            top={0}
+                            left={0}
+                            right={0}
+                            ref={clickOutsideRef}
+                            style={{ ...transitionStyle, zIndex: 1 }}
+                        >
+                            Dropdown
+                        </Paper>
+                    )}
+                </Transition> */}
+
                 <Stack px={12} py={6}>
                     {!isTruncated &&
+
                         <Stack>
                             <Group >
                                 <Image
@@ -31,7 +62,8 @@ function SetComp({ title, description, date, image, childComponent }: { title: s
                             <Text mx={6}>
                                 {description}
                             </Text>
-                        </Stack>}
+                        </Stack>
+                    }
 
                     {isTruncated &&
                         <Box>

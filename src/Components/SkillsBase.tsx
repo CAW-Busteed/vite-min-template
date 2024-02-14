@@ -5,64 +5,126 @@ import { useState } from 'react'
 // import ST_tech from 'assets/skilltab_code.svg';
 // import ST_env from 'assets/skilltab_env.svg';
 
+const skillsDict = [
+    { skill: 'Python', type: 'tech', proficiency: 75 },
+    { skill: 'Data Analysis', type: 'tech', proficiency: 97 },
+    { skill: 'C & C++', type: 'tech', proficiency: 50 },
+    { skill: 'Lua', type: 'tech', proficiency: 15 },
+    { skill: 'Software Integration', type: 'tech', proficiency: 80 },
+    { skill: 'Database Management', type: 'tech', proficiency: 55 },
+    { skill: 'Fullstack Development', type: 'tech', proficiency: 70 },
+    { skill: 'Sustainability', type: 'environment', proficiency: 80 },
+    { skill: 'GIS', type: 'environment', proficiency: 45 },
+    { skill: 'Education & Outreach', type: 'environment', proficiency: 99 },
+    { skill: 'Monitoring & Sampling', type: 'environment', proficiency: 30 },
+    { skill: 'Gardening', type: 'environment', proficiency: 60 },
+    { skill: 'Technical Writing', type: 'writing', proficiency: 70 },
+    { skill: 'Editing', type: 'writing', proficiency: 85 },
+    { skill: 'Translation', type: 'writing', proficiency: 80 },
+
+]
+
+
 
 function SkillsBase() {
-    const [active, setActive] = useState('tech');
+    const [environment, setEnvironment] = useState(true);
+    const [writing, setWriting] = useState(true);
+    const [tech, setTech] = useState(true);
+
+    const sortedSkills = skillsDict.sort((a, b) => b.proficiency - a.proficiency);
+    const topSevenSkills = sortedSkills.slice(0, 7);
 
 
     return (
         <>
             <Group mx={36} my={12} style={{ width: '90%', height: '100%' }}>
+
                 <Stack pr={12}>
-                    <ActionIcon onClick={() => setActive("environment")} variant='outline' color='gray' radius='xl' size='lg' style={{ backgroundColor: 'white' }}>
-                        {/* Environment Icon */}
-                        {/* {ST_env} */}
+                    <ActionIcon
+                        onClick={() => setEnvironment(!environment)}
+                        variant='filled' color={environment ? 'green' : 'gray'} radius='xl' size='lg'
+                    // style={{ backgroundColor: 'white' }}
+                    >
+                        leaf
                     </ActionIcon>
 
-                    <ActionIcon onClick={() => setActive("writing")} variant='outline' color='gray' radius='xl' size='lg' style={{ backgroundColor: 'white' }}>
-                        {/* Writing Icon */}
-                        {/* {ST_write} */}
+                    <ActionIcon
+                        onClick={() => setWriting(!writing)}
+                        variant='filled' color={writing ? 'cyan' : 'gray'} radius='xl' size='lg'
+                    // style={{ backgroundColor: 'white' }}
+                    >
+                        pen
                     </ActionIcon>
 
-                    <ActionIcon onClick={() => setActive("tech")} variant='outline' color='gray' radius='xl' size='lg' style={{ backgroundColor: 'white' }}>
-                        {/* Programming Icon */}
-                        {/* {ST_tech} */}
+                    <ActionIcon
+                        onClick={() => setTech(!tech)}
+                        variant='filled' color={tech ? 'blue' : 'gray'} radius='xl' size='lg'
+                    // style={{ backgroundColor: 'white' }}
+                    >
+                        code
                     </ActionIcon>
                 </Stack>
 
                 <Stack style={{ width: '90%', height: '100%' }}>
                     <Box>
                         {/* Brief description */}
-                        {active === 'environment' &&
+                        {environment &&
                             <Text>
-                                This is a sample text for the first
+                                Enthusiastic and versatile, I am a junior
+                                software developer with a unique
+                                blend of experiences as a teacher,
+                                tutor, writer, and proofreader. My
+                                journey has equipped me with strong
+                                problem-solving skills, effective
+                                communication, and a creative
+                                mindset.
+                                In my roles, I've thrived in collaborative
+                                environments, working with cross-functional teams to deliver impactful
+                                solutions. I bring a keen eye for detail,
+                                cultivated through years of writing
+                                and proofreading, to the world of
+                                programming. My commitment to
+                                continuous improvement,
+                                adaptability, and a positive work ethic
+                                makes me a valuable addition to any
+                                team.
+
                             </Text>}
-                        {active === 'writing' &&
+                        {writing &&
                             <Text>
-                                This is a sample text for the next one, the writing one
+                                I seek to better my understanding
+                                of the editorial industry, as well as
+                                work to benefit people, promote
+                                inclusivity, and enact sustainable
+                                practices. I will also benefit from
+                                working with a large variety of
+                                people on an international scale.
+
                             </Text>}
-                        {active === 'tech' &&
+                        {tech &&
                             <Text>
-                                This is a sample text
+                                I hope to break into the field. I am
+                                dedicated to building a better
+                                future for the generations that
+                                follow me, primarily through
+                                sustainable development and
+                                practices. I strive to live a
+                                sustainable lifestyle and I want to
+                                empower others on a similar path.
                             </Text>}
                     </Box>
 
                     <Box m={36} >
-                        {/* Hard Skills in percentages */}
-                        {active === 'environment' &&
-                            <><SkillsGraph skill='Sustainability' proficiency={80} />
-                                <SkillsGraph skill='example' proficiency={67} />
-                            </>}
+                        <Stack>
+                            {topSevenSkills.map((skill, index) => (
+                                ((skill.type === 'environment' && environment) ||
+                                    (skill.type === 'writing' && writing) ||
+                                    (skill.type === 'tech' && tech)) && (
+                                    <SkillsGraph key={index} {...skill} />
+                                )
+                            ))}
 
-                        {active === 'tech' &&
-                            <><SkillsGraph skill='Python' proficiency={40} />
-                                <SkillsGraph skill='example' proficiency={97} />
-                            </>}
-
-                        {active === 'writing' &&
-                            <><SkillsGraph skill='technical writing' proficiency={75} />
-                                <SkillsGraph skill='example' proficiency={12} />
-                            </>}
+                        </Stack>
 
                     </Box>
                 </Stack>

@@ -19,7 +19,7 @@ const blogDict = [
     { id: 6, comp: <BobaFett />, title: "Why Was the Book of Boba Fett so Disjointed?", description: "A glimpse into what could have been, and why we should worry about Disney following in Marvel and DC’s footsteps.", date: "March 14, 2022", image: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*umR6D4kD-RNyP-t9" },
     { id: 7, comp: <Doggone />, title: "Doggone", description: "Practically nobody likes flying. Those that do are either clinically insane or have something to tide them over. The airline provides alcohol, but some people bring along a friend. This fuzzy friend may end up dividing the passengers. A story inspired by Patricia.", date: "Jul 16, 2022", image: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*umR6D4kD-RNyP-t9" },
 ]
-
+// TODO: format blog posts
 
 function Blog() {
 
@@ -45,7 +45,7 @@ function Blog() {
 
                             {blogItem && blogItem.comp}
 
-                            {/* This is where the most recent blog would go, the highest id in the Dict. Until archive use*/}
+
                         </Stack>
 
                         <Stack style={{ height: '100%' }}

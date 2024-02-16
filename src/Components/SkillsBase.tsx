@@ -114,7 +114,7 @@ function SkillsBase() {
                             </Text>}
                     </Box>
 
-                    <Box m={36} >
+                    <Box m={36} style={{ overflowY: 'auto' }}>
                         <Stack>
                             {topSevenSkills.map((skill, index) => (
                                 ((skill.type === 'environment' && environment) ||

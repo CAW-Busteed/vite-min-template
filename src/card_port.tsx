@@ -110,13 +110,7 @@ function Portfolio() {
 
             <Flex mx={36} my={12} style={{ width: '90%', height: '100%' }}>
                 <div className="sticky-element">
-                    {/* TODO: add to CSS
 
-                    .sticky-element {
-                        position: sticky;
-                        top: 0;
-                    }
-                    */}
                     <Stack pr={12}>
                         <ActionIcon
                             onClick={() => setEnvironment(!environment)}

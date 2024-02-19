@@ -4,7 +4,8 @@ import HistorySm from './HistorySm';
 
 function HistoryLg() {
     return (
-        <Flex mx={36} py={12} gap={'xl'}
+        <Flex
+            mx={36} py={12} gap={'xl'}
             justify="space-between" >
             <Stack
                 style={{ flex: 1 }}

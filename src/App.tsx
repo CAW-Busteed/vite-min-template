@@ -70,7 +70,7 @@ export default function App() {
 
 
     <Container>
-      <Container bg='cyan' pl={0} style={{ width: '65%', display: 'flex', alignItems: 'center', position: 'absolute', right: 0, height: '100vh' }}>
+      <Container bg='bgColor.9' pl={0} style={{ width: '65%', display: 'flex', alignItems: 'center', position: 'absolute', right: 0, height: '100vh' }}>
 
         <Stack bg="white" align="center" mr={6} style={{ height: '75%', overflowY: 'auto', width: '100%' }}>
           {/* For best effects have top and bottom blur away...
@@ -114,19 +114,22 @@ export default function App() {
 
       </Container>
 
-      <Container style={{ height: '100vh', width: '35%', position: 'absolute', left: 0, boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} >
+      <Container
+        bg='bgColor.1'
+        style={{ height: '100vh', width: '35%', position: 'absolute', left: 0, boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} >
         <Stack>
           <Button onClick={changeThemeGreen}> Green</Button>
           <Button onClick={changeThemeCode}> Code</Button>
           <Button onClick={changeThemeWrite}> Write</Button>
         </Stack>
-        <Flex bg='white' justify="center" gap="xl" style={{ alignItems: 'center', justifyContent: 'center', }}>
+        <Flex justify="center" gap="xl" style={{ alignItems: 'center', justifyContent: 'center', }}>
 
 
           <Stack
             h={300}
-            bg="var(--mantine-color-body)"
-            align="flex-start"
+            // bg="var(--mantine-color-body)"
+            align="center"
+            justify="space-between"
             py={20}
             pl={20}
           >
@@ -134,31 +137,32 @@ export default function App() {
 
 
             {/* TODO: add icons and have them grow on hover with a word. */}
-            <ActionIcon onClick={() => setActive("home")} variant={active == 'home' ? "filled" : "outline"} color='cyan' radius='xl' size='xl'
+            <ActionIcon onClick={() => setActive("home")} variant="filled" color={active == 'home' ? "bgColor.3" : "bgColor.5"} radius='xl' size='lg'
+            // should the home button be bigger, or uniform?
             // style={{ backgroundColor: 'white' }}
             >
               {/* Home */}
               Home
             </ActionIcon>
-            <ActionIcon onClick={() => setActive("blog")} variant={active == 'blog' ? "filled" : "outline"} color='gray' radius='xl' size='xl'
+            <ActionIcon onClick={() => setActive("blog")} variant='filled' color={active == 'blog' ? "bgColor.3" : "bgColor.5"} radius='xl' size='lg'
             // style={{ backgroundColor: 'white' }}
             >
               {/* Blog */}
               Blog
             </ActionIcon>
-            <ActionIcon onClick={() => setActive("portfolio")} variant={active == 'portfolio' ? "filled" : "outline"} color='gray' radius='xl' size='xl'
+            <ActionIcon onClick={() => setActive("portfolio")} variant='filled' color={active == 'portfolio' ? "bgColor.3" : "bgColor.5"} radius='xl' size='lg'
             // style={{ backgroundColor: 'white' }}
             >
               {/* Portfolio */}
               Portfolio
             </ActionIcon>
-            <ActionIcon onClick={() => setActive("skills")} variant={active == 'skills' ? "filled" : "outline"} color='gray' radius='xl' size='xl'
+            <ActionIcon onClick={() => setActive("skills")} variant='filled' color={active == 'skills' ? "bgColor.3" : "bgColor.5"} radius='xl' size='lg'
             // style={{ backgroundColor: 'white' }}
             >
               {/* Skills */}
               Skills
             </ActionIcon>
-            <ActionIcon onClick={() => setActive("contact")} variant={active == 'contact' ? "filled" : "outline"} color='gray' radius='xl' size='xl'
+            <ActionIcon onClick={() => setActive("contact")} variant='filled' color={active == 'contact' ? "bgColor.3" : "bgColor.5"} radius='xl' size='lg'
             // style={{ backgroundColor: 'white' }}
             >
               {/* Contact */}

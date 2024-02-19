@@ -37,7 +37,9 @@ function SkillsBase() {
 
     return (
         <>
-            <Group mx={36} my={12} style={{ width: '90%', height: '100%' }}>
+            <Group
+                bg='white'
+                mx={36} my={12} style={{ width: '90%', height: '100%' }}>
 
                 <Stack pr={12}>
                     <ActionIcon

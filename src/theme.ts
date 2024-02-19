@@ -5,9 +5,10 @@ export const basicTheme = createTheme({
 
   // defined color schemes
   colors: {
-    forestGreen: ['#62d75f', '#34c230', '	#248721', '#228B22', '#051f20', '#0b2b26', '#163832', '#235347', '#8eb69b', '#daf1de'],
-    navyBlue: ['#000035', '#000042', '#000053', '#000068', '	#1c1c84', '#0000aa', '	#0000dd', '	#0044ff', '	#0077dd', '#0077dd'],
-    velvetPurple: ['#8B43FA', '#FA43EB', '#C643FA', '#4F43FA', '#FA437E', '#B400FA', '#6100FA', '#553D7A', '#7A3D75', '#B300FA']
+    forestGreen: ['#daf1de', '#62d75f', '#8eb69b', '#34c230', '#248721', '#228B22', '#0b2b26', '#235347', '#051f20', '#163832'],
+    navyBlue: ['#BBE8F2', '#94D7F2', '#5FB6D9', '#0077dd', '#0044ff', '#0000dd', '#1c1c84', '#000068', '#000053', '#000035'],
+    velvetPurple: ['#e099fd', '#D77BFB', '#C643FA', '#B400FA', '#8B43FA', '#6100FA', '#c232fb', '#B300FA', '#6b0096', '#7A3D75', '#FA43EB', '#FA437E', '#4F43FA'],
+    bgColor: ['#E0F2F2', '#D5D0C4', '#A5B3B3', '#9CA5B1', '#877C73', '#6A7373', '#6C6B68', '#5E6666', '#44474D', '#323636']
   },
 
   /** primary color for controls and links */
@@ -40,11 +41,17 @@ export const greenTheme = createTheme({
   primaryColor: 'green',
 
   /** background color for various components: modal, notifications, etc. */
-  white: '#95F082',
+  white: '#f3f3f3',
 
   /** text color */
   black: '#333',
 
+  colors: {
+    bgColor: ['#daf1de', '#62d75f', '#8eb69b', '#34c230', '#248721', '#228B22', '#0b2b26', '#235347', '#051f20', '#163832'],
+    navyBlue: ['#BBE8F2', '#94D7F2', '#5FB6D9', '#0077dd', '#0044ff', '#0000dd', '#1c1c84', '#000068', '#000053', '#000035'],
+    velvetPurple: ['#e099fd', '#D77BFB', '#C643FA', '#B400FA', '#8B43FA', '#6100FA', '#c232fb', '#B300FA', '#6b0096', '#7A3D75', '#FA43EB', '#FA437E', '#4F43FA'],
+    neutral: ['#E0F2F2', '#D5D0C4', '#A5B3B3', '#9CA5B1', '#877C73', '#6A7373', '#6C6B68', '#5E6666', '#44474D', '#323636']
+  },
 
   /** font-family for all text elements */
   fontFamily: 'Lato, sans-serif',
@@ -55,11 +62,17 @@ export const codeTheme = createTheme({
   primaryColor: 'blue',
 
   /** background color for various components: modal, notifications, etc. */
-  white: '#B4CCF0',
+  white: '#f3f3f3',
 
   /** text color */
   black: '#333',
 
+  colors: {
+    forestGreen: ['#daf1de', '#62d75f', '#8eb69b', '#34c230', '#248721', '#228B22', '#0b2b26', '#235347', '#051f20', '#163832'],
+    bgColor: ['#BBE8F2', '#94D7F2', '#5FB6D9', '#0077dd', '#0044ff', '#0000dd', '#1c1c84', '#000068', '#000053', '#000035'],
+    velvetPurple: ['#e099fd', '#D77BFB', '#C643FA', '#B400FA', '#8B43FA', '#6100FA', '#c232fb', '#B300FA', '#6b0096', '#7A3D75', '#FA43EB', '#FA437E', '#4F43FA'],
+    neutral: ['#E0F2F2', '#D5D0C4', '#A5B3B3', '#9CA5B1', '#877C73', '#6A7373', '#6C6B68', '#5E6666', '#44474D', '#323636']
+  },
 
   /** font-family for all text elements */
   fontFamily: 'Lato, sans-serif',
@@ -74,6 +87,13 @@ export const writeTheme = createTheme({
 
   /** text color */
   black: '#333',
+
+  colors: {
+    forestGreen: ['#daf1de', '#62d75f', '#8eb69b', '#34c230', '#248721', '#228B22', '#0b2b26', '#235347', '#051f20', '#163832'],
+    navyBlue: ['#BBE8F2', '#94D7F2', '#5FB6D9', '#0077dd', '#0044ff', '#0000dd', '#1c1c84', '#000068', '#000053', '#000035'],
+    bgColor: ['#e099fd', '#D77BFB', '#C643FA', '#B400FA', '#8B43FA', '#6100FA', '#c232fb', '#B300FA', '#6b0096', '#7A3D75', '#FA43EB', '#FA437E', '#4F43FA'],
+    neutral: ['#E0F2F2', '#D5D0C4', '#A5B3B3', '#9CA5B1', '#877C73', '#6A7373', '#6C6B68', '#5E6666', '#44474D', '#323636']
+  },
 
 
   /** font-family for all text elements */

@@ -1,4 +1,4 @@
-import { Stack, ActionIcon, Flex, Box } from "@mantine/core";
+import { Stack, Flex, Box, Title } from "@mantine/core";
 import { SetStateAction, useState } from "react";
 
 import BlogArchiveButton from "./Components/BlogArchButton";
@@ -39,9 +39,11 @@ function Blog() {
         <>
             {isTruncated ?
                 (
-                    <Flex direction={"row"}>
+                    <Flex direction={"row"}
+                        bg='white'>
 
-                        <Stack mx={12}>
+                        <Stack mx={12}
+                        >
 
                             {blogItem && blogItem.comp}
 
@@ -49,12 +51,13 @@ function Blog() {
                         </Stack>
 
                         <Stack style={{ height: '100%' }}
-                            bg={'gray.3'} justify="center"
+                            bg={'bgColor.3'} justify="center"
+
                             onClick={() => setIsTruncated(!isTruncated)}>
 
                             {/* TODO: icon follows, stack should change and work on click */}
 
-                            <ActionIcon variant="outline" color="teal" radius="xl" size="xl">{isTruncated ? 'Archive' : 'Post'}</ActionIcon>
+                            <Title order={3} p={6} style={{ writingMode: 'vertical-rl', textOrientation: 'sideways' }}>{isTruncated ? 'Archive' : 'Back'}</Title>
                         </Stack>
 
 
@@ -63,12 +66,13 @@ function Blog() {
                 ) : (
                     <Flex direction={"row"}>
                         <Stack style={{ height: '100%' }}
-                            bg={'gray.4'} justify="center"
+                            bg={'bgColor.4'} justify="center"
                             onClick={() => setIsTruncated(!isTruncated)}>
 
                             {/* TODO: icon follows, stack should change and work on click */}
 
-                            <ActionIcon variant="outline" color="teal" radius="xl" size="xl" >{isTruncated ? 'Archive' : 'Back'}</ActionIcon>
+                            <Title order={3} p={6} style={{ writingMode: 'vertical-rl', textOrientation: 'sideways' }}>{isTruncated ? 'Archive' : 'Back'}</Title>
+
                         </Stack>
                         <Stack ml={6} my={12}>
                             {blogDict.map((post, index) => (

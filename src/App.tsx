@@ -6,7 +6,7 @@ import { Flex, Stack, Container, MantineProvider, Title, ActionIcon, Button } fr
 import { basicTheme, greenTheme, codeTheme, writeTheme } from "./theme";
 import { useState } from "react";
 
-import HistoryLg from "./Components/HistoryLg";
+// import HistoryLg from "./Components/HistoryLg";
 import SkillsBase from "./Components/SkillsBase";
 
 import Contact from "./card_contact";
@@ -21,9 +21,9 @@ export default function App() {
   const [theme, setTheme] = useState(basicTheme);
 
   // Consider using these at top level to control what is displayed
-  // const [environment, setEnvironment] = useState(true);
-  // const [writing, setWriting] = useState(true);
-  // const [tech, setTech] = useState(true);
+  const [environment, setEnvironment] = useState(true);
+  const [writing, setWriting] = useState(true);
+  const [tech, setTech] = useState(true);
 
   // The Change Theme functions are redundant, because I expect to change them to accomodate fused themes
   const changeThemeGreen = () => {
@@ -65,12 +65,27 @@ export default function App() {
     }
   };
 
+  const toggleEnv = () => {
+    setEnvironment(!environment);
+    changeThemeGreen();
+  }
+
+  const toggleTech = () => {
+    setTech(!tech);
+    changeThemeCode();
+  }
+
+  const toggleWrite = () => {
+    setWriting(!writing);
+    changeThemeWrite();
+  }
+
 
   return <MantineProvider theme={theme}>
 
 
     <Container>
-      <Container bg='bgColor.9' pl={0} style={{ width: '65%', display: 'flex', alignItems: 'center', position: 'absolute', right: 0, height: '100vh' }}>
+      <Container bg='bgColor.7' pl={0} style={{ width: '65%', display: 'flex', alignItems: 'center', position: 'absolute', right: 0, height: '100vh' }}>
 
         <Stack bg="white" align="center" mr={6} style={{ height: '75%', overflowY: 'auto', width: '100%' }}>
           {/* For best effects have top and bottom blur away...
@@ -92,15 +107,15 @@ export default function App() {
           {active === 'portfolio' &&
             // basic portfolio
             <>
-              <Portfolio />
+              <Portfolio environment={environment} setEnvironment={setEnvironment} writing={writing} setWriting={setWriting} tech={tech} setTech={setTech} />
             </>
           }
 
           {active === 'skills' &&
             // basic skills
             <>
-              <SkillsBase />
-              <HistoryLg />
+              <SkillsBase environment={environment} setEnvironment={setEnvironment} writing={writing} setWriting={setWriting} tech={tech} setTech={setTech} />
+
               {/* TODO: fix the skillsbase overflow issue, check positioning/overflow of Skillsbase */}
             </>
           }
@@ -118,9 +133,9 @@ export default function App() {
         bg='bgColor.1'
         style={{ height: '100vh', width: '35%', position: 'absolute', left: 0, boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} >
         <Stack>
-          <Button onClick={changeThemeGreen}> Green</Button>
-          <Button onClick={changeThemeCode}> Code</Button>
-          <Button onClick={changeThemeWrite}> Write</Button>
+          <Button onClick={toggleEnv} color={environment ? 'green' : 'gray'}> Green</Button>
+          <Button onClick={toggleTech} color={tech ? 'blue' : 'gray'}> Code</Button>
+          <Button onClick={toggleWrite} color={writing ? 'cyan' : 'gray'}> Write</Button>
         </Stack>
         <Flex justify="center" gap="xl" style={{ alignItems: 'center', justifyContent: 'center', }}>
 

@@ -10,7 +10,7 @@ function SetComp({ title, description, date, image, childComponent }: { title: s
 
     return (
         <>
-            <Box bg={'white'} style={{ boxShadow: '8px 8px 15px 2px rgba(0, 0, 0, 0.15)' }}>
+            <Box bg={'white'} style={{ boxShadow: '8px 8px 15px 2px rgba(0, 0, 0, 0.15)', borderRadius: '25px' }}>
 
 
                 {/* Transition component example, works best with papers. Recommend using CSS */}

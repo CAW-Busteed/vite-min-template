@@ -1,5 +1,5 @@
-import { Flex, ActionIcon, Stack, Box } from '@mantine/core';
-import { useState } from 'react'
+import { Flex, Stack, Box } from '@mantine/core';
+// import { useState } from 'react'
 
 import SetComp from './Components/SetComp';
 import Doggone from './Components/Content/Portfolio/Doggone';
@@ -95,21 +95,30 @@ const projDict = [
 
 // TODO: go over them and mark the ones that cause errors/have bad formatting. Also tags?
 
+interface PortfolioProps {
+    environment: any;
+    setEnvironment: React.Dispatch<React.SetStateAction<any>>;
+    writing: any;
+    setWriting: React.Dispatch<React.SetStateAction<any>>;
+    tech: any;
+    setTech: React.Dispatch<React.SetStateAction<any>>;
+}
 
-function Portfolio() {
+
+const Portfolio: React.FC<PortfolioProps> = ({ environment, setEnvironment, writing, setWriting, tech, setTech }) => {
     // const [active, setActive] = useState('all');
-    const [environment, setEnvironment] = useState(true);
-    const [writing, setWriting] = useState(true);
-    const [tech, setTech] = useState(true);
+    // const [environment, setEnvironment] = useState(true);
+    // const [writing, setWriting] = useState(true);
+    // const [tech, setTech] = useState(true);
 
 
 
     return (
         <>
-            <Box bg='bgColor.9'>
+            <Box bg='bgColor.7'>
 
                 <Flex mx={36} my={12} style={{ width: '90%', height: '100%' }}>
-                    <div className="sticky-element">
+                    {/* <div className="sticky-element">
 
                         <Stack pr={12}>
                             <ActionIcon
@@ -136,7 +145,7 @@ function Portfolio() {
                                 code
                             </ActionIcon>
                         </Stack>
-                    </div>
+                    </div> */}
 
                     <Stack>
                         {projDict.map((post, index) => (

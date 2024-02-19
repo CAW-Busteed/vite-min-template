@@ -1,6 +1,8 @@
 import SkillsGraph from './SkillsGraph';
-import { Box, Group, ActionIcon, Text, Stack } from '@mantine/core';
-import { useState } from 'react'
+import { Box, Group, Text, Stack } from '@mantine/core';
+
+import HistoryLg from './HistoryLg';
+// import { useState } from 'react'
 // import ST_write from 'assets/skilltab_write.svg';
 // import ST_tech from 'assets/skilltab_code.svg';
 // import ST_env from 'assets/skilltab_env.svg';
@@ -24,12 +26,20 @@ const skillsDict = [
 
 ]
 
+interface PortfolioProps {
+    environment: any;
+    setEnvironment: React.Dispatch<React.SetStateAction<any>>;
+    writing: any;
+    setWriting: React.Dispatch<React.SetStateAction<any>>;
+    tech: any;
+    setTech: React.Dispatch<React.SetStateAction<any>>;
+}
 
 
-function SkillsBase() {
-    const [environment, setEnvironment] = useState(true);
-    const [writing, setWriting] = useState(true);
-    const [tech, setTech] = useState(true);
+const SkillsBase: React.FC<PortfolioProps> = ({ environment, setEnvironment, writing, setWriting, tech, setTech }) => {
+    // const [environment, setEnvironment] = useState(true);
+    // const [writing, setWriting] = useState(true);
+    // const [tech, setTech] = useState(true);
 
     const sortedSkills = skillsDict.sort((a, b) => b.proficiency - a.proficiency);
     const topSevenSkills = sortedSkills.slice(0, 7);
@@ -41,7 +51,7 @@ function SkillsBase() {
                 bg='white'
                 mx={36} my={12} style={{ width: '90%', height: '100%' }}>
 
-                <Stack pr={12}>
+                {/* <Stack pr={12}>
                     <ActionIcon
                         onClick={() => setEnvironment(!environment)}
                         variant='filled' color={environment ? 'green' : 'gray'} radius='xl' size='lg'
@@ -65,7 +75,7 @@ function SkillsBase() {
                     >
                         code
                     </ActionIcon>
-                </Stack>
+                </Stack> */}
 
                 <Stack style={{ width: '90%', height: '100%' }}>
                     <Box>
@@ -116,7 +126,9 @@ function SkillsBase() {
                             </Text>}
                     </Box>
 
-                    <Box m={36} style={{ overflowY: 'auto' }}>
+                    <Box m={6}
+
+                    >
                         <Stack>
                             {topSevenSkills.map((skill, index) => (
                                 ((skill.type === 'environment' && environment) ||
@@ -129,9 +141,11 @@ function SkillsBase() {
                         </Stack>
 
                     </Box>
+
+                    <HistoryLg />
                 </Stack>
 
-            </Group>
+            </Group >
 
 
         </>

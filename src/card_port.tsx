@@ -115,37 +115,9 @@ const Portfolio: React.FC<PortfolioProps> = ({ environment, setEnvironment, writ
 
     return (
         <>
-            <Box bg='bgColor.7'>
+            <Box style={{ background: 'transparent' }}>
 
                 <Flex mx={36} my={12} style={{ width: '90%', height: '100%' }}>
-                    {/* <div className="sticky-element">
-
-                        <Stack pr={12}>
-                            <ActionIcon
-                                onClick={() => setEnvironment(!environment)}
-                                variant='filled' color={environment ? 'green' : 'gray'} radius='xl' size='lg'
-                            // style={{ backgroundColor: 'white' }}
-                            >
-                                leaf
-                            </ActionIcon>
-
-                            <ActionIcon
-                                onClick={() => setWriting(!writing)}
-                                variant='filled' color={writing ? 'cyan' : 'gray'} radius='xl' size='lg'
-                            // style={{ backgroundColor: 'white' }}
-                            >
-                                pen
-                            </ActionIcon>
-
-                            <ActionIcon
-                                onClick={() => setTech(!tech)}
-                                variant='filled' color={tech ? 'blue' : 'gray'} radius='xl' size='lg'
-                            // style={{ backgroundColor: 'white' }}
-                            >
-                                code
-                            </ActionIcon>
-                        </Stack>
-                    </div> */}
 
                     <Stack>
                         {projDict.map((post, index) => (

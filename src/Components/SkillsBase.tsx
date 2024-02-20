@@ -51,31 +51,6 @@ const SkillsBase: React.FC<PortfolioProps> = ({ environment, setEnvironment, wri
                 bg='white'
                 mx={36} my={12} style={{ width: '90%', height: '100%' }}>
 
-                {/* <Stack pr={12}>
-                    <ActionIcon
-                        onClick={() => setEnvironment(!environment)}
-                        variant='filled' color={environment ? 'green' : 'gray'} radius='xl' size='lg'
-                    // style={{ backgroundColor: 'white' }}
-                    >
-                        leaf
-                    </ActionIcon>
-
-                    <ActionIcon
-                        onClick={() => setWriting(!writing)}
-                        variant='filled' color={writing ? 'cyan' : 'gray'} radius='xl' size='lg'
-                    // style={{ backgroundColor: 'white' }}
-                    >
-                        pen
-                    </ActionIcon>
-
-                    <ActionIcon
-                        onClick={() => setTech(!tech)}
-                        variant='filled' color={tech ? 'blue' : 'gray'} radius='xl' size='lg'
-                    // style={{ backgroundColor: 'white' }}
-                    >
-                        code
-                    </ActionIcon>
-                </Stack> */}
 
                 <Stack style={{ width: '90%', height: '100%' }}>
                     <Box>
@@ -127,7 +102,6 @@ const SkillsBase: React.FC<PortfolioProps> = ({ environment, setEnvironment, wri
                     </Box>
 
                     <Box m={6}
-
                     >
                         <Stack>
                             {topSevenSkills.map((skill, index) => (

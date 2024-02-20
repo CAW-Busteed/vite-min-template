@@ -85,9 +85,11 @@ export default function App() {
 
 
     <Container>
-      <Container bg='bgColor.7' pl={0} style={{ width: '65%', display: 'flex', alignItems: 'center', position: 'absolute', right: 0, height: '100vh' }}>
+      <Container
+        bg='bgColor.2' pl={0} style={{ width: '65%', display: 'flex', alignItems: 'center', position: 'absolute', right: 0, height: '100vh' }}>
 
-        <Stack bg="white" align="center" mr={6} style={{ height: '75%', overflowY: 'auto', width: '100%' }}>
+        <Stack
+          bg="white" align="center" mr={6} style={{ height: '75%', overflowY: 'auto', width: '100%' }}>
           {/* For best effects have top and bottom blur away...
           set padding for more space if needed */}
 
@@ -116,7 +118,6 @@ export default function App() {
             <>
               <SkillsBase environment={environment} setEnvironment={setEnvironment} writing={writing} setWriting={setWriting} tech={tech} setTech={setTech} />
 
-              {/* TODO: fix the skillsbase overflow issue, check positioning/overflow of Skillsbase */}
             </>
           }
 

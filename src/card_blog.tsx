@@ -89,7 +89,7 @@ function Blog() {
                 
                 >
                     <Stack 
-                    className="transparentBG"
+                    className="filetab"
                     onClick={() =>  toggleArchive()}>
 
                         

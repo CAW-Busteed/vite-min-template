@@ -1,4 +1,4 @@
-import { Stack, Group, Image, Title, Text, Box } from "@mantine/core";
+import { Stack, Image, Title, Text, Box, Flex } from "@mantine/core";
 
 
 function BlogArchiveButton({ title, description, date, image }: { title: string, description: string, date: string, image: string }) {
@@ -11,14 +11,15 @@ function BlogArchiveButton({ title, description, date, image }: { title: string,
                 <Stack px={12} py={6}>
 
 
-                    <Group >
+                    <Flex >
                         <Image
                             radius="md"
-                            h={50}
+                            h={100}
                             w={200}
                             fit="contain"
                             src={image}
                             fallbackSrc="https://placehold.co/600x400?text=Placeholder"
+                            mx={6}
                         // replace fallbackSrc with variables
                         />
                         <Stack justify="center">
@@ -26,7 +27,7 @@ function BlogArchiveButton({ title, description, date, image }: { title: string,
                             <Text fs={'italic'} size='sm' c={'dimmed'}>{date}</Text>
                         </Stack>
 
-                    </Group>
+                    </Flex>
 
                     <Text mx={6}>
                         {description}

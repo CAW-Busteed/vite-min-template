@@ -20,6 +20,53 @@ export default function App() {
   const [active, setActive] = useState('home');
   const [theme, setTheme] = useState(basicTheme);
 
+  let themeCombo = {
+    eco : true,
+    write : true,
+    tech : true
+  };
+
+  const changeTheme = () => {
+    if (themeCombo.eco === true) {
+      if (themeCombo.write === true) {
+        if (themeCombo.tech === true) {
+          setTheme(basicTheme);
+          // combination of all themes UPDATE
+        }
+        else {
+        setTheme(basicTheme);
+        // combination of eco and write REPLACE
+        }
+      }
+      else if (themeCombo.tech === true) {
+        setTheme(basicTheme);
+        // combination of eco and tech REPLACE
+      }
+      else {
+      setTheme(greenTheme);
+      //only eco
+      }
+    }
+    else if (themeCombo.write === true) {
+      if (themeCombo.tech === true) {
+        setTheme(basicTheme);
+        // only write and tech REPLACE
+      }
+      else {
+        setTheme(writeTheme);
+        // only write
+      }
+    }
+    else if (themeCombo.tech === true) {
+      setTheme(codeTheme);
+      // only tech
+    }
+    else {
+      setTheme(basicTheme);
+      // none
+    }
+  }
+
   // Consider using these at top level to control what is displayed
   const [environment, setEnvironment] = useState(true);
   const [writing, setWriting] = useState(true);
@@ -67,17 +114,23 @@ export default function App() {
 
   const toggleEnv = () => {
     setEnvironment(!environment);
-    changeThemeGreen();
+    themeCombo.eco = !themeCombo.eco;
+    changeTheme();
+    //changeThemeGreen();
   }
 
   const toggleTech = () => {
     setTech(!tech);
-    changeThemeCode();
+    themeCombo.tech = !themeCombo.tech;
+    changeTheme();
+    //changeThemeCode();
   }
 
   const toggleWrite = () => {
     setWriting(!writing);
-    changeThemeWrite();
+    themeCombo.write = !themeCombo.write;
+    changeTheme();
+    //changeThemeWrite();
   }
 
 
@@ -132,7 +185,10 @@ export default function App() {
 
       <Container
         bg='bgColor.1'
-        style={{ height: '100vh', width: '35%', position: 'absolute', left: 0, boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} >
+        style={{ 
+        height: '100vh', width: '35%', position: 'absolute', left: 0, 
+        boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} 
+        className="main">
         <Stack>
           <Button onClick={toggleEnv} color={environment ? 'green' : 'gray'}> Green</Button>
           <Button onClick={toggleTech} color={tech ? 'blue' : 'gray'}> Code</Button>

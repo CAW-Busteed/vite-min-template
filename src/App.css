@@ -44,33 +44,49 @@
     background: linear-gradient(to top, white, rgba(255, 255, 255, 0));
 }
 
-/* my attempt at animation */
-
-.blog-truncate {
-    max-width: 10%;
-    /* Adjust as needed */
-    overflow: auto;
-    transition: max-width 0.3s ease-in-out;
-    /* Adjust duration and easing as needed */
+.main {
+    z-index: 5;
 }
 
-.anim1 {
-    max-width: 1000px;
-    /* Adjust to a large enough value that shows all the content */
-    transition: max-width 0.3s ease-in-out;
-    /* Adjust duration and easing as needed */
+/* fucking 4
+ */
+
+.parent{
+position: relative;
+/* overflow-x: hidden; */
+}
+
+.child{
+position: relative;
+transition: translateX(-100%) 2s;
+max-width: 50%;
+/* overflow-y: scroll; */
+}
+
+.childclose{
+position: relative;
+transition: translateX(100%) 2s;
+overflow-x: clip;
+max-width: 50%;
+}
+
+.transparentBG {
+    background-color:  rgba(248, 246, 246, 0.90);
 }
 
 
-
-.anim2 {
-    max-width: 100%;
-    /* Adjust to a large enough value that shows all the content */
-    transition: max-width 0.3s ease-in-out;
-    /* Adjust duration and easing as needed */
-    right: -100%;
+.sidenav {
+    height: 75%;
+    width:0;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    transition: 0.5s;
+       
 }
-
+.hidden {
+    display: none;
+}
 
 /* container slider */
 .content-slider {

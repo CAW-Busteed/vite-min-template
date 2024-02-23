@@ -1,4 +1,4 @@
-import { Stack, Flex, Box, Title } from "@mantine/core";
+import { Stack, Flex, Box, Title, Container } from "@mantine/core";
 import { SetStateAction, useState } from "react";
 
 import BlogArchiveButton from "./Components/BlogArchButton";
@@ -7,6 +7,8 @@ import FlavorsOfFiction from './Components/Content/Blog/FlavorsOfFiction';
 import StoriesProsper from './Components/Content/Blog/StoriesProsper';
 import Cryptobros from './Components/Content/Blog/Cryptobros';
 import BobaFett from './Components/Content/Blog/BobaFett';
+
+
 
 
 
@@ -21,29 +23,53 @@ const blogDict = [
 
 function Blog() {
 
-    const [isTruncated, setIsTruncated] = useState(true);
+    const [isArchive, setIsArchive] = useState(false);
     const highestId = Math.max(...blogDict.map(item => item.id));
     const [blog, setBlog] = useState<number | null>(highestId);
     const blogItem = blogDict.find(item => item.id === blog);
     const returnClick = (PostId: SetStateAction<number | null>) => {
         setBlog(PostId);
-        setIsTruncated(!isTruncated);
+        closeNav();
     };
 
+    function openNav() {
+        const element = document.getElementById("blogArchive");
+        if (element) {
+            element.style.width = "90%";
+        }
+    }
+      
+    function closeNav() {
+        const element = document.getElementById("blogArchive");
+        if (element) {
+            element.style.width = "0";
+        }
+    }
+
+    const toggleArchive = () => {
+        if (isArchive === false) {
+            openNav();
+            setIsArchive(true);
+        } else {
+            closeNav();
+            setIsArchive(false);
+        }
+    }
 
 
     return (
 
         <>
-            {/* {isTruncated ?
-                ( */}
+            
             <Flex
                 direction={"row"}
                 bg='white'
+                className="parent"
+                // style={{ position: "relative" }}
             >
 
-                <Stack mx={12}
-                    className={isTruncated ? "anim1" : "blog-truncate"}
+                <Stack mx={36}
+        
                 >
 
                     {blogItem && blogItem.comp}
@@ -51,50 +77,48 @@ function Blog() {
 
                 </Stack>
 
-                <Stack style={{ height: '100%' }}
-                    bg={'bgColor.3'} justify="center"
 
-                    onClick={() => setIsTruncated(!isTruncated)}>
+                <Flex
+                id="blogArchive"
+                className= 'sidenav '
+                justify="flex-end"
+                align="center"
+                
+                
+                
+                
+                >
+                    <Stack 
+                    className="transparentBG"
+                    onClick={() =>  toggleArchive()}>
 
-                    {/* TODO: icon follows, stack should change and work on click */}
+                        
 
-                    <Title order={3} p={6} style={{ writingMode: 'vertical-rl', textOrientation: 'sideways' }}>{isTruncated ? 'Archive' : 'Back'}</Title>
-                </Stack>
+                        <Title order={3} p={12} style={{ writingMode: 'vertical-rl', textOrientation: 'sideways' }}>Archive</Title>
+                    </Stack>
 
+                    <Stack
+                        className={isArchive ? "child transparentBG" : "childclose transparentBG"}
+                        // pl={12}
+                        my={12}
+                        align="center">
+                        <Container>
+                            {blogDict.map((post, index) => (
 
-                {/* </Flex>
-
-                ) : (
-                    <Flex direction={"row"}>
-                        <Stack style={{ height: '100%' }}
-                            bg={'bgColor.4'} justify="center"
-                            onClick={() => setIsTruncated(!isTruncated)}>
-
-
-
-                            <Title order={3} p={6} style={{ writingMode: 'vertical-rl', textOrientation: 'sideways' }}>{isTruncated ? 'Archive' : 'Back'}</Title>
-
-                        </Stack>
-                         */}
-                <Stack
-                    className={isTruncated ? "blog-truncate" : "anim1"}
-                    ml={6} my={12}>
-                    {blogDict.map((post, index) => (
-
-                        <Box
-                            onClick={() => returnClick(post.id)}
-                        // TODO: fix switching does not bring the scroll back up. 
-                        >
-                            <BlogArchiveButton key={index} {...post} />
-                        </Box>
-                    )
-                    )}
-
-                </Stack>
+                                <Box
+                                    onClick={() => returnClick(post.id)}
+                                    my={12}
+                                
+                                >
+                                    <BlogArchiveButton key={index} {...post} />
+                                </Box>
+                            )
+                            )}
+                        </Container>
+                    </Stack>
+                </Flex>
             </Flex>
 
-            {/*     )
-             } */}
 
         </>
     );

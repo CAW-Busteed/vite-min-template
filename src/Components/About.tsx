@@ -9,7 +9,7 @@ interface AboutProps {
 function About({ title, text }: AboutProps) {
     return (
         <Flex>
-            <Stack>
+            <Stack mr={12}>
                 <Title order={3}>{title}</Title>
                 <Text>{text}</Text>
             </Stack>

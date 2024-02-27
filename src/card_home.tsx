@@ -7,7 +7,41 @@ import About from "./Components/About";
 
 const about_text = "I am a writer, editor, and developer with a passion for language, literature, and technology. I have a background in English, creative writing, and environmental policy, and I am currently studying computer science and full-stack development. I have worked as a proofreader, editor, and writer, and I have experience in tutoring, teaching, and kitchen work. I am interested in the intersection of technology and the humanities, and I am excited to continue learning and growing in the tech industry."
 
-function Home() {
+const priceRange = [
+    { id: 1, service: "Editing", description: "Proofreading, copyediting, and developmental editing", price: "$18-22/hr", type: ["writing"] },
+    { id: 2, service: "Writing", description: "Creative writing, technical writing, and content creation", price: "$23-27/hr", type: ["writing"]},
+    { id: 3, service: "Tutoring", description: "English, French, math, science, and computer science", price: "$25-30/hr", type: ["tech", "writing"]},
+    { id: 4, service: "Development", description: "Web development, app development, and software development", price: "$20-25/hr", type: ["tech"]},
+    { id: 5, service: "Consultation", description: "Environmental policy, tech, and writing", price: "$20-40/hr", type: ["tech", "writing", "environment"]},
+    { id: 6, service: "ESG Compliance", description: "Environmental, social, and governance compliance", price: "$25-35/hr", type: ["environment"]},
+    { id: 7, service: "Sustainability Analyst", description: "Sustainability, environmental policy, and environmental science", price: "$28-38/hr", type: ["environment"]}
+]
+
+interface PortfolioProps {
+    environment: any;
+    setEnvironment: React.Dispatch<React.SetStateAction<any>>;
+    writing: any;
+    setWriting: React.Dispatch<React.SetStateAction<any>>;
+    tech: any;
+    setTech: React.Dispatch<React.SetStateAction<any>>;
+}
+
+const Home: React.FC<PortfolioProps> = ({ environment, setEnvironment, writing, setWriting, tech, setTech }) => {
+
+    const priceRangeTable = priceRange.map((item) => (
+        // logically, this should render the table based on the state of the checkboxes...but it doesn't. TODO: fix this
+        ((item.type.includes('environment') && environment) ||
+        (item.type.includes('writing') && writing) ||
+        (item.type.includes('tech') && tech)) && (
+            <Table.Tr key={item.id}>
+                <Table.Td>{item.service}</Table.Td>
+                <Table.Td>{item.description}</Table.Td>
+                <Table.Td>{item.price}</Table.Td>
+            </Table.Tr>
+        )
+    )
+    );
+
     return (
         <>
             {/* <Box my={12} style={{ height: 400 }}>
@@ -52,14 +86,24 @@ function Home() {
                 </div>
             </Box>
 
-            <Box mx={36} my={12} style={{ flex: 1 }}>
+            <Box mx={24} my={12} style={{ flex: 1 }}>
                 <About title="About Me" text={about_text} />
             </Box>
 
-            {/* TODO: add a price range for freelancing */}
-            <Table>
-
+            <Box m={12}>
+            <Table >
+                <Table.Thead>
+                    <Table.Tr>
+                        <Table.Th>Service</Table.Th>
+                        <Table.Th>Description</Table.Th>
+                        <Table.Th>Price Range</Table.Th>
+                    </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>
+                    {priceRangeTable}
+                </Table.Tbody>
             </Table>
+            </Box>
         </>
     );
 }

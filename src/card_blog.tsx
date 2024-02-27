@@ -102,7 +102,9 @@ function Blog() {
                         // pl={12}
                         my={12}
                         align="center">
-                        <Container>
+                        <Container 
+                        // style={{overflowY:'auto'}}
+                        >
                             {blogDict.map((post, index) => (
 
                                 <Box

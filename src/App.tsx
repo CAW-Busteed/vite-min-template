@@ -3,7 +3,7 @@ import './App.css';
 
 import { Flex, Stack, Container, MantineProvider, Title, ActionIcon, Button } from "@mantine/core";
 // import { IconHeart } from '@tabler/icons-react';
-import { basicTheme, greenTheme, codeTheme, writeTheme } from "./theme";
+import { basicTheme, greenTheme, codeTheme, writeTheme, fullTheme, oceanTheme, forestTheme, mountainTheme } from "./theme";
 import { useState } from "react";
 
 // import HistoryLg from "./Components/HistoryLg";
@@ -14,32 +14,32 @@ import Home from "./card_home";
 import Blog from "./card_blog";
 import Portfolio from "./card_port";
 
-
+let themeCombo = {
+  eco : true,
+  write : true,
+  tech : true
+};
 
 export default function App() {
   const [active, setActive] = useState('home');
   const [theme, setTheme] = useState(basicTheme);
 
-  let themeCombo = {
-    eco : true,
-    write : true,
-    tech : true
-  };
+
 
   const changeTheme = () => {
     if (themeCombo.eco === true) {
       if (themeCombo.write === true) {
         if (themeCombo.tech === true) {
-          setTheme(basicTheme);
+          setTheme(fullTheme);
           // combination of all themes UPDATE
         }
         else {
-        setTheme(basicTheme);
+        setTheme(forestTheme);
         // combination of eco and write REPLACE
         }
       }
       else if (themeCombo.tech === true) {
-        setTheme(basicTheme);
+        setTheme(oceanTheme);
         // combination of eco and tech REPLACE
       }
       else {
@@ -49,7 +49,7 @@ export default function App() {
     }
     else if (themeCombo.write === true) {
       if (themeCombo.tech === true) {
-        setTheme(basicTheme);
+        setTheme(mountainTheme);
         // only write and tech REPLACE
       }
       else {
@@ -72,65 +72,29 @@ export default function App() {
   const [writing, setWriting] = useState(true);
   const [tech, setTech] = useState(true);
 
-  // The Change Theme functions are redundant, because I expect to change them to accomodate fused themes
-  const changeThemeGreen = () => {
-    if (theme === basicTheme) {
-      setTheme(greenTheme);
-    } else if (theme === codeTheme) {
-      setTheme(greenTheme);
-    } else if (theme === writeTheme) {
-      setTheme(greenTheme);
-    }
-    else {
-      setTheme(basicTheme);
-    }
-  };
-
-  const changeThemeCode = () => {
-    if (theme === basicTheme) {
-      setTheme(codeTheme);
-    } else if (theme === greenTheme) {
-      setTheme(codeTheme);
-    } else if (theme === writeTheme) {
-      setTheme(codeTheme);
-    }
-    else {
-      setTheme(basicTheme);
-    }
-  };
-
-  const changeThemeWrite = () => {
-    if (theme === basicTheme) {
-      setTheme(writeTheme);
-    } else if (theme === codeTheme) {
-      setTheme(writeTheme);
-    } else if (theme === greenTheme) {
-      setTheme(writeTheme);
-    }
-    else {
-      setTheme(basicTheme);
-    }
-  };
 
   const toggleEnv = () => {
     setEnvironment(!environment);
     themeCombo.eco = !themeCombo.eco;
+    {console.log(themeCombo)}
     changeTheme();
-    //changeThemeGreen();
+    
   }
 
   const toggleTech = () => {
     setTech(!tech);
     themeCombo.tech = !themeCombo.tech;
+    {console.log(themeCombo)}
     changeTheme();
-    //changeThemeCode();
+    
   }
 
   const toggleWrite = () => {
     setWriting(!writing);
     themeCombo.write = !themeCombo.write;
+    {console.log(themeCombo)}
     changeTheme();
-    //changeThemeWrite();
+    
   }
 
 
@@ -150,7 +114,7 @@ export default function App() {
 
           {active === 'home' &&
             // basic home
-            <Home />
+            <Home environment={environment} setEnvironment={setEnvironment} writing={writing} setWriting={setWriting} tech={tech} setTech={setTech}/>
 
           }
 
@@ -190,9 +154,9 @@ export default function App() {
         boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} 
         className="main">
         <Stack>
-          <Button onClick={toggleEnv} color={environment ? 'green' : 'gray'}> Green</Button>
-          <Button onClick={toggleTech} color={tech ? 'blue' : 'gray'}> Code</Button>
-          <Button onClick={toggleWrite} color={writing ? 'cyan' : 'gray'}> Write</Button>
+          <Button onClick={() => toggleEnv()} color={environment ? 'green' : 'gray'}> Green</Button>
+          <Button onClick={() => toggleTech()} color={tech ? 'blue' : 'gray'}> Code</Button>
+          <Button onClick={() => toggleWrite()} color={writing ? 'cyan' : 'gray'}> Write</Button>
         </Stack>
         <Flex justify="center" gap="xl" style={{ alignItems: 'center', justifyContent: 'center', }}>
 

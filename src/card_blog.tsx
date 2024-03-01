@@ -109,7 +109,7 @@ function Blog() {
                         >
                             {blogDict.map((post, index) => (
 
-                                <Box
+                                <Box key={index}
                                     onClick={() => returnClick(post.id)}
                                     my={12}
                                 

@@ -83,35 +83,35 @@ export default function App() {
           // combination of all themes 
         }
         else {
-        setTheme(forestTheme);
+        setTheme(fullTheme);
         // combination of eco and write 
         }
       }
       else if (themeCombo.tech === true) {
-        setTheme(oceanTheme);
+        setTheme(fullTheme);
         // combination of eco and tech 
       }
       else {
-      setTheme(greenTheme);
+      setTheme(fullTheme);
       //only eco
       }
     }
     else if (themeCombo.write === true) {
       if (themeCombo.tech === true) {
-        setTheme(mountainTheme);
+        setTheme(fullTheme);
         //  write and tech 
       }
       else {
-        setTheme(writeTheme);
+        setTheme(fullTheme);
         // only write
       }
     }
     else if (themeCombo.tech === true) {
-      setTheme(codeTheme);
+      setTheme(fullTheme);
       // only tech
     }
     else {
-      setTheme(basicTheme);
+      setTheme(fullTheme);
       // none
     }
   }
@@ -219,6 +219,8 @@ export default function App() {
         width: '35%', position: 'fixed', top:0, left: 0, 
         boxShadow: '8px 0px 15px 0px rgba(0, 0, 0, 0.15)' }} 
         className="main">
+
+
         <Stack>
           <Button onClick={(event) => toggleEnv(event)} color={environment ? 'green' : 'gray'}
           className="ripple-button"
@@ -230,6 +232,8 @@ export default function App() {
           className="ripple-button"
           > Write</Button>
         </Stack>
+
+
         <Flex justify="center" gap="xl" style={{ alignItems: 'center', justifyContent: 'center', }}>
 
 

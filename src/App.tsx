@@ -1,9 +1,9 @@
 import "@mantine/core/styles.css";
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 import './App.css';
 
 import { Flex, Stack, Container, MantineProvider, Title, ActionIcon, Button } from "@mantine/core";
-import { useWindowScroll, useHover } from '@mantine/hooks';
+
 
 import { basicTheme, greenTheme, codeTheme, writeTheme, fullTheme, oceanTheme, forestTheme, mountainTheme } from "./theme";
 import { useState } from "react";
@@ -47,26 +47,7 @@ function createRipple(event) {
   }
 }
 
-function useEffect(() => {
-  const elements = document.querySelectorAll('.main-child');
-  elements.forEach(element => {
-    element.addEventListener('animationend', () => {
-      if (element.classList.contains('main-child')) {
-        element.style.display = 'none';
-      }
-    });
-  });
 
-  return () => {
-    elements.forEach(element => {
-      element.removeEventListener('animationend', () => {
-        if (element.classList.contains('main-child')) {
-          element.style.display = 'none';
-        }
-      });
-    });
-  };
-}, []);
 
 
 export default function App() {

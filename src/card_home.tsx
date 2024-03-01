@@ -1,8 +1,9 @@
-import { Box, Table } from "@mantine/core";
+import { Box, Button, Table, Group, Text } from "@mantine/core";
 import '@mantine/carousel/styles.css';
-// import { Carousel } from '@mantine/carousel';
+import { useWindowScroll } from '@mantine/hooks';
 import About from "./Components/About";
-// import HomeCarousel from "./Components/Carousel";
+
+
 
 
 const about_text = "I am a writer, editor, and developer with a passion for language, literature, and technology. I have a background in English, creative writing, and environmental policy, and I am currently studying computer science and full-stack development. I have worked as a proofreader, editor, and writer, and I have experience in tutoring, teaching, and kitchen work. I am interested in the intersection of technology and the humanities, and I am excited to continue learning and growing in the tech industry."
@@ -19,17 +20,17 @@ const priceRange = [
 
 interface PortfolioProps {
     environment: any;
-    setEnvironment: React.Dispatch<React.SetStateAction<any>>;
+    
     writing: any;
-    setWriting: React.Dispatch<React.SetStateAction<any>>;
+    
     tech: any;
-    setTech: React.Dispatch<React.SetStateAction<any>>;
+    
 }
 
-const Home: React.FC<PortfolioProps> = ({ environment, setEnvironment, writing, setWriting, tech, setTech }) => {
+const Home: React.FC<PortfolioProps> = ({ environment, writing, tech }) => {
 
     const priceRangeTable = priceRange.map((item) => (
-        // logically, this should render the table based on the state of the checkboxes...but it doesn't. TODO: fix this
+        
         ((item.type.includes('environment') && environment) ||
         (item.type.includes('writing') && writing) ||
         (item.type.includes('tech') && tech)) && (
@@ -41,6 +42,8 @@ const Home: React.FC<PortfolioProps> = ({ environment, setEnvironment, writing, 
         )
     )
     );
+    
+    const [scroll, scrollTo] = useWindowScroll();
 
     return (
         <>
@@ -85,6 +88,13 @@ const Home: React.FC<PortfolioProps> = ({ environment, setEnvironment, writing, 
                     </div>
                 </div>
             </Box>
+            
+            {/* <Group justify="center">
+            <Text>
+                Scroll position x: {scroll.x}, y: {scroll.y}
+            </Text>
+            <Button onClick={() => scrollTo({ y: 0 })}>Scroll to top</Button>
+            </Group> */}
 
             <Box mx={24} my={12} style={{ flex: 1 }}>
                 <About title="About Me" text={about_text} />

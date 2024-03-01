@@ -1,60 +1,60 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 // import { useClickOutside } from '@mantine/hooks';
-import { Button, Image, Group, Title, Text, Stack, Box, Flex, Transition, Paper, Affix } from '@mantine/core';
-import { useScrollIntoView, useWindowScroll } from '@mantine/hooks';
+import { Button, Image, Title, Text, Stack, Box, Flex, Transition, Affix } from '@mantine/core';
+import { useWindowScroll } from '@mantine/hooks';
+
 
 function SetComp({ title, description, date, image, childComponent }: { title: string, description: string, date: string, image: string, childComponent: React.ReactNode }) {
 
     const [isTruncated, setIsTruncated] = useState(false);
     const [scroll, scrollTo] = useWindowScroll();
-    const { scrollIntoView, targetRef, scrollableRef } = useScrollIntoView<
-    HTMLDivElement,
-    HTMLDivElement
-  >({
-    duration: 1000,
-    offset: 20,
+
+    const elementRef = useRef<HTMLDivElement | null>(null);
+    const [elementTop, setElementTop] = useState(0);
+
+    useEffect(() => {
+        if (elementRef.current) {
+            const rect = elementRef.current.getBoundingClientRect();
+            setElementTop(rect.top + window.scrollY);
+        }
+    }, [elementRef]);
     
-  });
-
-//   const [affixPosition, setAffixPosition] = useState({ bottom: 100, right: 80 });
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const box = document.getElementById('myBox');
-//       const boxRect = box.getBoundingClientRect();
-//       const affixTop = Math.min(boxRect.bottom, window.innerHeight);
-
-//       setAffixPosition({ bottom: affixTop, right: 80});
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
+    function closeScroll(x: number) {
+        
+        if (isTruncated === true) {
+            console.log(x);
+            console.log('isTruncated, closing');
+            scrollTo({ y: x });
+            
+            setIsTruncated(false);
+            
+        }
+        else {
+            x = scroll.y;
+            console.log(x);
+            console.log('is not Truncated, opening');
+            setIsTruncated(true);
+        }
+    }
     
-  function closeScroll() {
-    if (isTruncated === true) {
-        setIsTruncated(false);
-        scrollIntoView();
-    }
-    else {
-        setIsTruncated(true);
-    }
-    }
-
-    // const clickOutsideRef = useClickOutside(() => setIsTruncated(false));
 
 
     return (
         <>
-            <Box id='myBox' ref={scrollableRef} bg={'white'} style={{ boxShadow: '8px 8px 15px 2px rgba(0, 0, 0, 0.15)', borderRadius: '25px' }}>
+            <Box id='myBox' 
+            // ref={scrollableRef} 
+            bg={'white'} 
+            style={{ boxShadow: '8px 8px 15px 2px rgba(0, 0, 0, 0.15)', borderRadius: '25px' }}>
 
-                <Stack px={12} py={6} mt={6}>
+                <Stack 
+                ref={elementRef}
+                id='topElement'
+                px={12} py={6} mt={6}>
                     {!isTruncated &&
 
-                        <Flex >
+                        <Flex 
+                        // ref={targetRef}
+                         >
                             <Image
                                     radius="md"
                                     h={200}
@@ -70,7 +70,6 @@ function SetComp({ title, description, date, image, childComponent }: { title: s
                                 
                             
                                 <Stack 
-                                // ref={targetRef} 
                                 justify="center">
                                         <Title mb={0} order={3}>{title}</Title>
                                         <Text fs={'italic'} size='sm' c={'dimmed'}>{date}</Text>
@@ -79,8 +78,9 @@ function SetComp({ title, description, date, image, childComponent }: { title: s
 
                                 <Text >
                                     {description}
+                                            
                                 </Text>
-                                <Button mx={24} my={12} onClick={() => closeScroll()}>
+                                <Button mx={24} my={12} onClick={() => closeScroll(elementTop)}>
                                     
                                     {isTruncated ? 'Show less' : 'Read more'}
                                     {/* change button style to simple text link */}
@@ -100,8 +100,7 @@ function SetComp({ title, description, date, image, childComponent }: { title: s
                                     {(transitionStyles) => (
                                         <Button
                                         style={transitionStyles}
-                                        onClick={() => closeScroll()
-                                            // targetRef.current?.scrollIntoView({ behavior: 'smooth' })
+                                        onClick={() => closeScroll(elementTop)
                                         }
                                         >
                                             Close "<i>{title}</i>"
@@ -111,7 +110,9 @@ function SetComp({ title, description, date, image, childComponent }: { title: s
 
                             </Affix>
 
-                            <Flex ref={scrollableRef}>
+                            <Flex 
+                            // ref={scrollableRef}
+                            >
 
                                 <Image m={12}
                                     h={200}
@@ -129,7 +130,7 @@ function SetComp({ title, description, date, image, childComponent }: { title: s
                                 {/* TODO: consider tags and definitely add a scrollup function */}
                             </Flex>
                             {childComponent}
-                            <Button mx={24} my={12} onClick={() => closeScroll()}>
+                            <Button mx={24} my={12} onClick={() => closeScroll(elementTop)}>
                         
                                 {isTruncated ? 'Close' : 'Read more'}
                                 {/* change button style to simple text link */}

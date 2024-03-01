@@ -27,6 +27,8 @@ function Blog() {
     const highestId = Math.max(...blogDict.map(item => item.id));
     const [blog, setBlog] = useState<number | null>(highestId);
     const blogItem = blogDict.find(item => item.id === blog);
+
+    
     const returnClick = (PostId: SetStateAction<number | null>) => {
         setBlog(PostId);
         closeNav();

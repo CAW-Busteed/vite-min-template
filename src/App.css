@@ -1,8 +1,113 @@
-.sticky-element {
-    position: sticky;
-    top: 0;
+/* layer prop */
+.main {
+    z-index: 5;
 }
 
+/* Using position: relative allows us to use position: absolute on our ripple element, which we need to control its position. 
+Meanwhile, overflow: hidden prevents the ripple from exceeding the button’s edges. */
+.ripple-button {
+    position: relative;
+    overflow: hidden;
+}
+
+span.ripple {
+    position: absolute; /* The absolute position we mentioned earlier */
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+.parent{
+    position: relative;
+    /* overflow-x: hidden; */
+}
+
+/* @keyframes hide {
+    0% {
+      visibility: visible;
+      opacity: 1;
+    }
+    99% {
+      visibility: visible;
+      opacity: 0;
+    }
+    100% {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+  
+  .main-child {
+    animation: hide 0.5s forwards;
+  }
+  
+  .main-childclose {
+    display: none;
+  } */
+
+.main-child{
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    left: 0;
+}
+
+.main-childclose{
+    opacity: 0;
+    /* how to shidt from visibility hidden to display none? */
+    /* visibility: hidden; */
+    display: none;
+    transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
+    position: absolute;
+    left: -9999px;
+}
+
+.child{
+position: relative;
+transition: translateX(-100%) 2s;
+max-width: 50%;
+/* overflow-y: scroll; */
+}
+
+.childclose{
+position: relative;
+transition: translateX(100%) 2s;
+overflow-x: clip;
+max-width: 50%;
+}
+
+.transparentBG {
+    background-color:  rgba(248, 246, 246, 0.90);
+}
+
+.filetab {
+    border-radius: 30% 0% 0% 30%;
+    background: linear-gradient(to right, rgb(255, 255, 255) 70%, rgba(248, 246, 246, 0.90));
+
+
+}
+
+
+.sidenav {
+    height: 77%;
+    width:0;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    transition: 0.5s;
+        
+}
+.hidden {
+    display: none;
+}
 
 /* examples */
 .box {
@@ -44,59 +149,11 @@
     background: linear-gradient(to top, white, rgba(255, 255, 255, 0));
 }
 
-.main {
-    z-index: 5;
-}
 
-/* fucking 4
- */
-
-.parent{
-position: relative;
-/* overflow-x: hidden; */
-}
-
-.child{
-position: relative;
-transition: translateX(-100%) 2s;
-max-width: 50%;
-/* overflow-y: scroll; */
-}
-
-.childclose{
-position: relative;
-transition: translateX(100%) 2s;
-overflow-x: clip;
-max-width: 50%;
-}
-
-.transparentBG {
-    background-color:  rgba(248, 246, 246, 0.90);
-}
-
-.filetab {
-    border-radius: 30% 0% 0% 30%;
-    background: linear-gradient(to right, rgb(255, 255, 255) 70%, rgba(248, 246, 246, 0.90));
-
-}
-
-
-.sidenav {
-    height: 75%;
-    width:0;
-    position: fixed;
-    z-index: 1;
-    right: 0;
-    transition: 0.5s;
-       
-}
-.hidden {
-    display: none;
-}
 
 /* container slider */
 .content-slider {
-    width: 100%;
+    width: 50%;
     height: 360px;
 }
 

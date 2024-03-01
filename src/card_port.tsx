@@ -1,4 +1,5 @@
 import { Flex, Stack, Box } from '@mantine/core';
+import { useWindowScroll } from '@mantine/hooks';
 // import { useState } from 'react'
 
 import SetComp from './Components/SetComp';
@@ -105,11 +106,9 @@ interface PortfolioProps {
 }
 
 
+
 const Portfolio: React.FC<PortfolioProps> = ({ environment, setEnvironment, writing, setWriting, tech, setTech }) => {
-    // const [active, setActive] = useState('all');
-    // const [environment, setEnvironment] = useState(true);
-    // const [writing, setWriting] = useState(true);
-    // const [tech, setTech] = useState(true);
+    const [scroll, scrollTo] = useWindowScroll();
 
 
 
@@ -121,7 +120,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ environment, setEnvironment, writ
 
                     <Stack>
                         {projDict.map((post, index) => (
-                            ((post.types === 'environment' && environment) ||
+                            (   (post.types === 'environment' && environment) ||
                                 (post.types === 'writing' && writing) ||
                                 (post.types === 'tech' && tech)) && (
                                 <SetComp key={index} {...post} />
